@@ -1,0 +1,26 @@
+.navbar > a{
+    display: inline-block;
+    box-sizing: border-box;
+    width: 210px;
+    padding: 5px;
+    margin: 0 6px 6px;
+    /* background: lightblue; */
+    text-decoration: none;
+    text-align: center;
+    font-size: min(10vw, 15px) ;
+    color: whitesmoke;
+    /* background-color: black; */
+}
+  
+/* a.active {
+    background: black;
+    color: white;
+} */
+nav{
+    background-color: black;
+    
+}
+#input {
+    border-radius: 15px;
+    padding-left: 20px;
+}
