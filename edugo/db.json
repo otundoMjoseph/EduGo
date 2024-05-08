@@ -1,0 +1,16 @@
+{
+    "students": [
+      {
+        "id": 1,
+        "name": "Zakayo mtoza ushuru",
+        "AdmNo": "002",
+        "Arrears": 8
+      },
+      {
+        "id": 2,
+        "name": "Brian Tm",
+        "AdmNo": "001",
+        "Arrears": 14
+      }
+    ]
+  }
