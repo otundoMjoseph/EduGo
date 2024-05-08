@@ -5,7 +5,7 @@ function SubmitStudent() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    // ...other fields
+    
   });
 
   const handleChange = (event) => {
@@ -20,14 +20,14 @@ function SubmitStudent() {
 
     try {
       await ApiService.createStudent(formData);
-      // Clear the form after successful submission
-      setFormData({ name: '', email: '', /* ...other fields */ }); 
-      // Optionally show a success message or redirect
-      alert('Student submitted successfully!'); // Example success message
+      
+      setFormData({ name: '', email: '',  }); 
+      
+      alert('Student submitted successfully!'); e
     } catch (error) {
-      // Handle submission errors (e.g., display error messages)
+      
       console.error('Error submitting student:', error);
-      alert('Failed to submit student. Please try again.'); // Example error message
+      alert('Failed to submit student. Please try again.'); 
     }
   };
 
@@ -50,7 +50,7 @@ function SubmitStudent() {
         onChange={handleChange}
         required
       />
-      {/* ...other form fields */}
+     
       <button type="submit">Submit</button>
     </form>
   );

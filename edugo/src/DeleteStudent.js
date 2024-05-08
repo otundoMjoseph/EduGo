@@ -9,7 +9,7 @@ function DeleteStudent() {
         try {
             await ApiService.deleteStudent(studentId);
             setMessage('Student deleted successfully!');
-            // Optional: Clear the input field after successful deletion
+            
             setStudentId(''); 
         } catch (error) {
             setMessage('An error occurred while deleting.');
