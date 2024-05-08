@@ -1,17 +1,21 @@
 import React from 'react';
-import DeleteStudent from './DeleteStudent';
-import SubmitStudent from './SubmitStudent';
-import UpdateStudent from './UpdateStudent';
+// import DeleteStudent from './DeleteStudent';
+// import SubmitStudent from './SubmitStudent';
+// import UpdateStudent from './UpdateStudent';
+import Navbar from './NavBar';
 
 function Home() {
     return (
         <div>
-            <h2>Home</h2>
-            <DeleteStudent /> 
-            <SubmitStudent />
-            <UpdateStudent />
+           <Navbar />
+            
+           
         </div>
     );
 }
 
 export default Home;
+
+{/* <DeleteStudent /> 
+<SubmitStudent />
+<UpdateStudent /> */}
