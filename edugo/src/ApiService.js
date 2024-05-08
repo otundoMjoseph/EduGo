@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://your-api-url.com'; // Replace with your actual API URL
+const API_URL = ""
 
 class ApiService {
   constructor(baseURL = API_URL) {
