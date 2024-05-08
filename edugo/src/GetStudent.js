@@ -21,7 +21,7 @@ function GetStudent() {
     }
   };
 
-  // Clear search results when search term is empty
+  
   useEffect(() => {
     if (!searchTerm) {
       setStudent(null);
@@ -45,10 +45,10 @@ function GetStudent() {
       {student && (
         <div>
           <h2>Student Information</h2>
-          {/* Display student information here, e.g., */}
+          
           <p>Name: {student.name}</p>
           <p>ID: {student.id}</p>
-          {/* ... */}
+          
         </div>
       )}
     </div>
