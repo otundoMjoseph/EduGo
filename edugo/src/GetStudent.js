@@ -10,11 +10,6 @@ function GetStudent() {
   const [error, setError] = useState(null);
 
 
-
-
-
-
-
   const handleSearch = async () => {
     setLoading(true);
     setError(null);
@@ -24,7 +19,6 @@ function GetStudent() {
       console.log(response)
       setStudent(
         <div>
-          test
           <h2>Student Information</h2>
 
           <p>Name: {response.name}</p>
