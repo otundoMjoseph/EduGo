@@ -12,10 +12,10 @@ function Home() {
                 <br/><br/>
                 <img src={"./images/dashboard-logo.png"} width={"400px"} alt={"dashboard-logo"}/>
                 <br/><br/>
-                <Link className={"back-link"} to='/dashboard/submit'>New Student</Link>
+                <Link className={"back-link"} to='/submit'>New Student</Link>
                 <Link className={"back-link"} to='/dashboard/get'>Get Student Details</Link>
-                <Link className={"back-link"} to='/dashboard/update'>Update Student Details</Link>
-                <Link className={"back-link"} to='/dashboard/delete'>Delete Student</Link>
+                <Link className={"back-link"} to='/update'>Update Student Details</Link>
+                <Link className={"back-link"} to='/delete'>Delete Student</Link>
             </div>
         </div>
     
