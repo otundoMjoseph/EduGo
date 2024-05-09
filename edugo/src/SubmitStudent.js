@@ -23,7 +23,7 @@ function SubmitStudent() {
       
       setFormData({ name: '', email: '',  }); 
       
-      alert('Student submitted successfully!'); e
+      alert('Student submitted successfully!');
     } catch (error) {
       
       console.error('Error submitting student:', error);
