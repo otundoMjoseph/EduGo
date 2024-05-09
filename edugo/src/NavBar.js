@@ -7,10 +7,10 @@ function Navbar() {
     <nav className="navbar">
       <NavLink> <input id='input' type='text' placeholder='Search' ></input> </NavLink>
     <NavLink to="/home" >Home</NavLink>
-    <NavLink >Delete Student</NavLink>
-    <NavLink >New Student</NavLink>
-    <NavLink >Update Student</NavLink>
-    <NavLink to="./" >Login</NavLink>
+    <NavLink to="/delete" >Delete Student</NavLink>
+    <NavLink to="/submit">New Student</NavLink>
+    <NavLink to="/update">Update Student</NavLink>
+    {/* <NavLink to="./" >Login</NavLink> */}
 
    
 
