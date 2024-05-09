@@ -8,7 +8,7 @@ export default function UpdateStudent() {
   const [student, setStudent] = useState({
     name: '',
     email: '',
-    // Add other fields as needed
+  
   });
 
   useEffect(() => {
@@ -35,6 +35,7 @@ export default function UpdateStudent() {
     setSelectedStudentId(id);
   };
 
+  //HANDLE CHANGE ON EVENT 
   const handleChange = (e) => {
     setStudent({...student, [e.target.name]: e.target.value });
 
