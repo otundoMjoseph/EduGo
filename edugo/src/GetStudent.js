@@ -68,11 +68,11 @@ if (filteredStudents.length === 0) {
       
       <div>
         {student && student.map((student) => (
-        <div key={student.id} class>
-          <h2 >Student Information </h2>
-          <p>Name: {student.name}</p>
-          <p>Email: {student.email}</p>
-          </div>
+        <ul key={student.id} className ="w3-ul w3-centre w3-card-4 ">
+          <li><h2 >Student Information </h2></li>
+          <li >  Name: {student.name}</li>
+          <li>Email: {student.email}</li>
+          </ul>
         ))}
  
       </div>

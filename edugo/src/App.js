@@ -8,9 +8,9 @@ import SubmitStudent from './SubmitStudent'
 import UpdateStudent from './UpdateStudent'
 
 
-
 function App() {
     return (
+     
         <BrowserRouter>
             <Routes>
               

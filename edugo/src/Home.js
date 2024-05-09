@@ -1,12 +1,15 @@
 import React from 'react';
 // import Navbar from './NavBar';
 import { Link } from 'react-router-dom';
+import NavBar from './NavBar';
+
 
 function Home() {
     return (
         <div>
 
            {/* <Navbar /> */}
+           <NavBar/>
            <div className={"centered-element"}>
             <div className={"student-container"}>
                 <h1>Students Management System Dashboard</h1>
