@@ -15,18 +15,19 @@ function GetStudent() {
     setError(null);
 
     try {
-      const response = await ApiService.getStudentById(searchTerm);
-      console.log(response)
-      setStudent(
-        <div>
-          <h2>Student Information</h2>
+      const response = await ApiService.getStudents();
+  
+      const searchTermLower = searchTerm.toLowerCase();
+      console.log(response[0]);
+      const filteredStudents = response.filter(student=>student.name.toLowerCase().includes (searchTermLower));
 
-          <p>Name: {response.name}</p>
-          <p>ID: {response.id}</p>
-
-        </div>
-      );
-    } catch (error) {
+if (filteredStudents.length === 0) {
+        setError('No student found with the given name.');}else{
+          setStudent(filteredStudents);
+        }
+        }
+      
+     catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
@@ -51,12 +52,12 @@ function GetStudent() {
         name='name'
         id='id'
         type="text"
-        placeholder="Enter student ID"
+        placeholder="Enter student name"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
 
       />
-      <button onClick={handleSearch} disabled={!searchTerm}>
+      <button onClick={handleSearch} disabled={!searchTerm} class="w3-btn">
         Search
       </button>
 
@@ -66,7 +67,14 @@ function GetStudent() {
 
       
       <div>
-        {student && student}
+        {student && student.map((student) => (
+        <div key={student.id} class>
+          <h2 >Student Information </h2>
+          <p>Name: {student.name}</p>
+          <p>Email: {student.email}</p>
+          </div>
+        ))}
+ 
       </div>
     </div>
   );

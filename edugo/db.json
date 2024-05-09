@@ -1,28 +1,34 @@
 {
   "students": [
     {
-      "id": "1",
-      "name": "RUTH NJOKI",
-      "email": "RURTHNJOKI@asdfa.com"
-    },
-    {
-      "id": "2",
-      "name": "EDIAN",
-      "email": "brianedian@gmail.com"
-    },
-    {
       "id": "2d77",
       "name": "NGENO",
       "email": "ediangreat@gmail.com"
     },
     {
       "id": "0971",
-      "name": "edian again",
+      "name": "EDIAN",
       "email": "edian@gmail.com"
     },
     {
-      "id": "cea9"
+      "id": "8ae6",
+      "name": "RAUL",
+      "email": "mydevcoding@gmail.com"
+    },
+    {
+      "id": "432d",
+      "name": "BRAYO",
+      "email": "gabrielkyalo.gk@gmail.com"
+    },
+    {
+      "id": "8aw6",
+      "name": "JOSEPH",
+      "email": "mydevcoding@gmail.com"
+    },
+    {
+      "id": "9aw6",
+      "name": "RUTH",
+      "email": "mydevcoding@gmail.com"
     }
   ]
 }
-

@@ -15,6 +15,11 @@ class ApiService {
     
   }
   
+  async getStudentByName(name) {
+    const response = await this.api.get(`/students?name=${name}`);
+    return response.data;
+  }
+
 
   async getStudentById(id) {
     const response = await this.api.get(`/students/${id}`);
