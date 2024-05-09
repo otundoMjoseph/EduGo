@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 function Home() {
     return (
         <div>
-            
+
            {/* <Navbar /> */}
            <div className={"centered-element"}>
             <div className={"student-container"}>
-                <h1>Student Management System Dashboard</h1>
+                <h1>Students Management System Dashboard</h1>
                 <br/><br/>
                 <img src={"./images/dashboard-logo.png"} width={"400px"} alt={"dashboard-logo"}/>
                 <br/><br/>
