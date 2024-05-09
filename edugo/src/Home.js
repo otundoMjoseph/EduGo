@@ -13,7 +13,7 @@ function Home() {
                 <img src={"./images/dashboard-logo.png"} width={"400px"} alt={"dashboard-logo"}/>
                 <br/><br/>
                 <Link className={"back-link"} to='/submit'>New Student</Link>
-                <Link className={"back-link"} to='/dashboard/get'>Get Student Details</Link>
+                <Link className={"back-link"} to='/students/:id'>Get Student Details</Link>
                 <Link className={"back-link"} to='/update'>Update Student Details</Link>
                 <Link className={"back-link"} to='/delete'>Delete Student</Link>
             </div>
