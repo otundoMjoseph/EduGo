@@ -2,28 +2,26 @@
   "students": [
     {
       "id": "1",
-      "name": "Zakayo mtoza ushuru",
-      "email": "test1@gmail.com"
+      "name": "adad",
+      "email": "adsdadasd@asdfa.com"
     },
     {
       "id": "2",
-      "name": "Brian Tm",
-      "email": "test2@gmail.com"
+      "name": "EDIAN",
+      "email": "brianedian@gmail.com"
     },
     {
       "id": "2d77",
-      "name": "joethairu",
-      "email": "test@gmail.com"
+      "name": "NGENO",
+      "email": "ediangreat@gmail.com"
     },
     {
       "id": "0971",
-      "name": "Edian Nyambura",
-      "email": "brianedian@gmail.com"
+      "name": "edian again",
+      "email": "edian@gmail.com"
     },
     {
-      "id": "cea9",
-      "name": "Brian",
-      "email": "brianedian@gmail.com"
+      "id": "cea9"
     }
   ]
 }
