@@ -16,7 +16,7 @@ function App() {
               
                 <Route path="/home" element={<Home />} />
                 <Route path="/" element={<Login />} />
-                <Route path="/students/:id" element={<GetStudent />} /> 
+                <Route path="/students" element={<GetStudent />} /> 
                 <Route path='/submit' element={<SubmitStudent />} />
                 <Route path='/delete' element={<DeleteStudent />} />
                 <Route path='/update'  element={<UpdateStudent />}/>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ApiService from './ApiService';
+import Navbar from './NavBar';
 
 function DeleteStudent() {
     const [studentId, setStudentId] = useState('');
@@ -18,7 +19,9 @@ function DeleteStudent() {
     };
 
     return (
-        <div>
+        <div className='delete-input-container' >
+            <Navbar />
+            <img className="student-img" src='./images/getstudent.png' width={"120px"} alt={"user-logo"} ></img>
             <h2>Delete Student</h2>
             <label htmlFor="studentId">Student ID:</label>
             <input 

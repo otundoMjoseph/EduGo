@@ -1,16 +1,20 @@
 import axios from 'axios';
 
-const API_URL = 'https://your-api-url.com'; // Replace with your actual API URL
+const API_URL = 'http://localhost:3000'
 
 class ApiService {
   constructor(baseURL = API_URL) {
     this.api = axios.create({ baseURL });
+    
   }
+  
 
   async getStudents() {
     const response = await this.api.get('/students');
     return response.data;
+    
   }
+  
 
   async getStudentById(id) {
     const response = await this.api.get(`/students/${id}`);
@@ -33,7 +37,7 @@ class ApiService {
   }
 }
 
-// Create a named instance
+
 const apiService = new ApiService();
 
 export default apiService;

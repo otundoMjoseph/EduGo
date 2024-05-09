@@ -1,16 +1,19 @@
 {
-    "students": [
-      {
-        "id": 1,
-        "name": "Zakayo mtoza ushuru",
-        "AdmNo": "002",
-        "Arrears": 8
-      },
-      {
-        "id": 2,
-        "name": "Brian Tm",
-        "AdmNo": "001",
-        "Arrears": 14
-      }
-    ]
-  }
+  "students": [
+    {
+      "id": "1",
+      "name": "Zakayo mtoza ushuru",
+      "email": "test1@gmail.com"
+    },
+    {
+      "id": "2",
+      "name": "Brian Tm",
+      "email": "test2@gmail.com"
+    },
+    {
+      "id": "2d77",
+      "name": "joethairu",
+      "email": "test@gmail.com"
+    }
+  ]
+}

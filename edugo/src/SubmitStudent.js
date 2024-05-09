@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ApiService from './ApiService';
+import Navbar from './NavBar';
+
 
 function SubmitStudent() {
   const [formData, setFormData] = useState({
@@ -32,7 +34,10 @@ function SubmitStudent() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <Navbar />
+    <form className="submit-input-container" onSubmit={handleSubmit}>
+       <img className="student-img" src='./images/getstudent.png' width={"120px"} alt={"user-logo"} ></img>
       <h2>Submit Student</h2>
       <input
         type="text"
@@ -53,6 +58,7 @@ function SubmitStudent() {
      
       <button type="submit">Submit</button>
     </form>
+    </div>
   );
 }
 
