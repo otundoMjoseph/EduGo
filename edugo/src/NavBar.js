@@ -8,6 +8,7 @@ function Navbar() {
   return (
     <nav className="w3-bar w3-black ">
     <NavLink className="w3-bar-item w3-button w3-blue w3-left" to="/home" >Home</NavLink>
+    <NavLink className="w3-bar-item w3-button w3-right" to="/students" >Get Student</NavLink>
     <NavLink className="w3-bar-item w3-button w3-right" to="/delete" >Delete Student</NavLink>
     <NavLink className="w3-bar-item w3-button w3-right"    to="/submit">New Student</NavLink>
     <NavLink className="w3-bar-item w3-button  w3-right"  to="/update">Update Student</NavLink>
