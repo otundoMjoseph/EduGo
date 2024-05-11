@@ -1,83 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import ApiService from './ApiService';
-import NavBar from './NavBar'
 
+function GetStudentDetailsComponent() {
+    const [students, setStudents] = useState([]);
 
-function GetStudent() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [student, setStudent] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+    useEffect(() => {
+        const fetchStudents = async () => {
+            try {
+                const studentsData = await ApiService.getAllStudents();
+                setStudents(studentsData);
+            } catch (error) {
+                console.error('Error fetching students:', error);
+            }
+        };
+        fetchStudents();
+    }, []);
 
-
-  const handleSearch = async () => {
-    setLoading(true);
-    setError(null);
-
-    try {
-      const response = await ApiService.getStudents();
-  
-      const searchTermLower = searchTerm.toLowerCase();
-      console.log(response[0]);
-      const filteredStudents = response.filter(student=>student.name.toLowerCase().includes (searchTermLower));
-
-if (filteredStudents.length === 0) {
-        setError('No student found with the given name.');}else{
-          setStudent(filteredStudents);
+    const handleStudentSelect = async (id) => {
+        try {
+            const student = await ApiService.getStudentById(id);
+            alert(`Student Details: ${JSON.stringify(student)}`);
+        } catch (error) {
+            console.error('Error fetching student details:', error);
+            alert('An error occurred while fetching student details.');
         }
-        }
-      
-     catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
 
-
-  useEffect(() => {
-    if (!searchTerm) {
-      setStudent(null);
-    }
-  }, [searchTerm]);
-
-  return (
-
-    <div id='get-input-container'>
-      <NavBar />
-      <img className="student-img" src='./images/getstudent.png' width={"120px"} alt={"user-logo"} ></img>
-      <h1>Get Student's Details</h1>
-      <input
-        autoComplete='off'
-        name='name'
-        id='id'
-        type="text"
-        placeholder="Enter student name"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-
-      />
-      <button onClick={handleSearch} disabled={!searchTerm} class="w3-btn">
-        Search
-      </button>
-
-      {loading && <p>Loading student data...</p>}
-      {error && <p>Error: {error}</p>}
-
-
-      
-      <div>
-        {student && student.map((student) => (
-        <ul key={student.id} className ="w3-ul w3-centre w3-card-4 ">
-          <li><h2 >Student Information </h2></li>
-          <li >  Name: {student.name}</li>
-          <li>Email: {student.email}</li>
-          </ul>
-        ))}
- 
-      </div>
-    </div>
-  );
+    return (
+        <div>
+            <h2>Get Student Details</h2>
+            <img src={"./images/dashboard-logo.png"} width={"400px"} alt={"dashboard-logo"}/>
+            <ul>
+                {students.map(student => (
+                    <li key={student.id} onClick={() => handleStudentSelect(student.id)}>
+                        {student.name} - {student.id}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
-export default GetStudent;
+export default GetStudentDetailsComponent;

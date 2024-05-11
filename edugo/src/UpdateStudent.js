@@ -1,82 +1,65 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './NavBar';
 import ApiService from './ApiService';
 
-export default function UpdateStudent() {
-  const [students, setStudents] = useState([]);
-  const [selectedStudentId, setSelectedStudentId] = useState(null);
-  const [student, setStudent] = useState({
-    name: '',
-    email: '',
-  
-  });
+function UpdateStudentComponent() {
+    const [students, setStudents] = useState([]);
+    const [selectedStudentId, setSelectedStudentId] = useState('');
+    const [selectedStudent, setSelectedStudent] = useState(null);
+    const [newName, setNewName] = useState('');
 
-  useEffect(() => {
-    const fetchStudents = async () => {
-      const data = await ApiService.getStudents();
-      setStudents(data);
+    useEffect(() => {
+        const fetchStudents = async () => {
+            try {
+                const studentsData = await ApiService.getAllStudents();
+                setStudents(studentsData);
+            } catch (error) {
+                console.error('Error fetching students:', error);
+            }
+        };
+        fetchStudents();
+    }, []);
+
+    const handleStudentChange = async (e) => {
+        const id = e.target.value;
+        setSelectedStudentId(id);
+        const student = await ApiService.getStudentById(id);
+        setSelectedStudent(student);
     };
 
-    fetchStudents();
-  }, []);
+    const handleUpdate = async () => {
+        try {
+            const updatedStudent = { ...selectedStudent, name: newName };
+            await ApiService.updateStudent(selectedStudentId, updatedStudent);
+            alert('Student updated successfully!');
+            setSelectedStudentId('');
+            setSelectedStudent(null);
+            setNewName('');
+        } catch (error) {
+            console.error('Error updating student:', error);
+            alert('An error occurred while updating the student.');
+        }
+    };
 
-  useEffect(() => {
-    if (selectedStudentId) {
-      const fetchStudent = async () => {
-        const data = await ApiService.getStudentById(selectedStudentId);
-        setStudent(data);
-      };
-
-      fetchStudent();
-    }
-  }, [selectedStudentId]);
-
-  const handleStudentSelect = (id) => {
-    setSelectedStudentId(id);
-  };
-
-  //HANDLE CHANGE ON EVENT 
-  const handleChange = (e) => {
-    setStudent({...student, [e.target.name]: e.target.value });
-
-  };
-
-  const handleSubmit = async (e) => {
-  
-    if (selectedStudentId) {
-      try {
-        await ApiService.updateStudent(selectedStudentId, student);
-        // Handle success (e.g., show a success message, redirect)
-      } catch (error) {
-        // Handle error (e.g., show an error message)
-      }
-    }
-  };
-
-  return (
-    <div className="submit-input-container">
-      <Navbar />
-      <img className="student-img" src='./images/getstudent.png' width={"120px"} alt={"user-logo"} ></img>
-      <h1>Update Student's Details</h1>
-      <div>
-        <h2>Select Student to Update:</h2>
-        <ul>
-          {students.map((student) => (
-            <li key={student.id}>
-              {student.name} ({student.email})
-              <button onClick={() => handleStudentSelect(student.id)} onChange={handleChange}>Update</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      {selectedStudentId && (
-        <form onSubmit={handleSubmit}>
-          <input type="text" name="name" value={student.name} onChange={handleChange} placeholder="Name" required />
-          <input type="email" name="email" value={student.email} onChange={handleChange} placeholder="Email" required />
-          {/* Add other input fields as needed */}
-          <button type="submit">Update</button>
-        </form>
-      )}
-    </div>
-  );
+    return (
+        <div>
+            <h2>Update Student</h2>
+            <select value={selectedStudentId} onChange={handleStudentChange}>
+                <option value="">Select a student</option>
+                {students.map(student => (
+                    <option key={student.id} value={student.id}>
+                        {student.name} - {student.id}
+                    </option>
+                ))}
+            </select>
+            {selectedStudent && (
+                <div>
+                    <p>Selected Student: {selectedStudent.name}</p>
+                    <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} />
+                    <button onClick={handleUpdate}>Update Student</button>
+                </div>
+            )}
+        </div>
+    );
 }
+
+export default UpdateStudentComponent;

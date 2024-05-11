@@ -1,41 +1,62 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ApiService from './ApiService';
-import Navbar from './NavBar';
 
-function DeleteStudent() {
-    const [studentId, setStudentId] = useState('');
-    const [message, setMessage] = useState('');
+function DeleteStudentComponent() {
+    const [students, setStudents] = useState([]);
+    const [selectedStudentId, setSelectedStudentId] = useState('');
+    const [selectedStudent, setSelectedStudent] = useState(null);
+
+    useEffect(() => {
+        const fetchStudents = async () => {
+            try {
+                const studentsData = await ApiService.getAllStudents();
+                setStudents(studentsData);
+            } catch (error) {
+                console.error('Error fetching students:', error);
+            }
+        };
+        fetchStudents();
+    }, []);
+
+    const handleStudentChange = async (e) => {
+        const id = e.target.value;
+        setSelectedStudentId(id);
+        const student = await ApiService.getStudentById(id);
+        setSelectedStudent(student);
+    };
 
     const handleDelete = async () => {
         try {
-            await ApiService.deleteStudent(studentId);
-            setMessage('Student deleted successfully!');
-            
-            setStudentId(''); 
+            await ApiService.deleteStudent(selectedStudentId);
+            alert('Student deleted successfully!');
+            setSelectedStudentId('');
+            setSelectedStudent(null);
         } catch (error) {
-            setMessage('An error occurred while deleting.');
-            console.error(error); 
+            console.error('Error deleting student:', error);
+            alert('An error occurred while deleting the student.');
         }
     };
 
     return (
-        <div className='delete-input-container' >
-            <Navbar />
-            <img className="student-img" src='./images/getstudent.png' width={"120px"} alt={"user-logo"} ></img>
+        <div>
             <h2>Delete Student</h2>
-            <label htmlFor="studentId">Student ID:</label>
-            <input 
-                type="text" 
-                id="studentId" 
-                value={studentId} 
-                onChange={(e) => setStudentId(e.target.value)} 
-            />
-            <button onClick={handleDelete} disabled={!studentId}> 
-                Confirm Delete 
-            </button> 
-            {message && <p>{message}</p>} 
+            <img src={"./images/dashboard-logo.png"} width={"400px"} alt={"dashboard-logo"}/>
+            <select value={selectedStudentId} onChange={handleStudentChange}>
+                <option value="">Select a student</option>
+                {students.map(student => (
+                    <option key={student.id} value={student.id}>
+                        {student.name} - {student.id}
+                    </option>
+                ))}
+            </select>
+            {selectedStudent && (
+                <div>
+                    <p>Selected Student: {selectedStudent.name}</p>
+                    <button onClick={handleDelete}>Delete Student</button>
+                </div>
+            )}
         </div>
     );
 }
 
-export default DeleteStudent;
+export default DeleteStudentComponent;

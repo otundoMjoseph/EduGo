@@ -1,48 +1,49 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:3000'
+const API_URL = 'https://edugo-2.onrender.com'; 
 
 class ApiService {
   constructor(baseURL = API_URL) {
-    this.api = axios.create({ baseURL });
-    
-  }
-  
-
-  async getStudents() {
-    const response = await this.api.get('/students');
-    return response.data;
-    
-  }
-  
-  async getStudentByName(name) {
-    const response = await this.api.get(`/students?name=${name}`);
-    return response.data;
+    this.baseURL = baseURL;
   }
 
+  async getAllStudents() {
+    const response = await fetch(`${this.baseURL}/students`);
+    return response.json();
+  }
 
   async getStudentById(id) {
-    const response = await this.api.get(`/students/${id}`);
-
-    return response.data;
+    const response = await fetch(`${this.baseURL}/students/${id}`);
+    return response.json();
   }
 
   async createStudent(data) {
-    const response = await this.api.post('/students', data);
-    return response.data;
+    const response = await fetch(`${this.baseURL}/students`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    return response.json();
   }
 
   async updateStudent(id, data) {
-    const response = await this.api.put(`/students/${id}`, data);
-    return response.data;
+    const response = await fetch(`${this.baseURL}/students/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    return response.json();
   }
 
   async deleteStudent(id) {
-    const response = await this.api.delete(`/students/${id}`);
-    return response.data;
+    const response = await fetch(`${this.baseURL}/students/${id}`, {
+      method: 'DELETE'
+    });
+    return response.json();
   }
 }
-
 
 const apiService = new ApiService();
 
