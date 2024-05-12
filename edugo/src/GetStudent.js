@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ApiService from './ApiService';
+import Navbar from './NavBar';
 
 function GetStudentDetailsComponent() {
     const [students, setStudents] = useState([]);
@@ -28,8 +29,10 @@ function GetStudentDetailsComponent() {
 
     return (
         <div>
+            <Navbar />
+             <img className="student-img" src='./images/getstudent.png' width={"120px"} alt={"user-logo"} ></img>
             <h2>Get Student Details</h2>
-            <img src={"./images/dashboard-logo.png"} width={"400px"} alt={"dashboard-logo"}/>
+           
             <ul>
                 {students.map(student => (
                     <li key={student.id} onClick={() => handleStudentSelect(student.id)}>

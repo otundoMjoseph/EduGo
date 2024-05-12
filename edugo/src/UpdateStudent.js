@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ApiService from './ApiService';
+import Navbar from './NavBar';
 
 function UpdateStudentComponent() {
     const [students, setStudents] = useState([]);
@@ -42,6 +43,8 @@ function UpdateStudentComponent() {
 
     return (
         <div>
+            <Navbar />
+            <img className="student-img" src='./images/getstudent.png' width={"120px"} alt={"user-logo"} ></img>
             <h2>Update Student</h2>
             <select value={selectedStudentId} onChange={handleStudentChange}>
                 <option value="">Select a student</option>
