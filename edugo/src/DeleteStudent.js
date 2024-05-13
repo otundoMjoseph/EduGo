@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ApiService from './ApiService';
-import NavBar from './NavBar';
 
 function DeleteStudentComponent() {
     const [students, setStudents] = useState([]);
@@ -39,10 +38,7 @@ function DeleteStudentComponent() {
     };
 
     return (
-        
-            <div>
-                <NavBar/>
-            <img className="student-img" src='./images/getstudent.png' width={"120px"} alt={"user-logo"} ></img>
+        <div>
             <h2>Delete Student</h2>
             <select value={selectedStudentId} onChange={handleStudentChange}>
                 <option value="">Select a student</option>

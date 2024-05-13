@@ -1,4 +1,4 @@
-const API_URL = 'https://edugo-2.onrender.com'; 
+const API_URL = 'https://edugo-2.onrender.com';
 
 class ApiService {
   constructor(baseURL = API_URL) {
